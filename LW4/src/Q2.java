@@ -1,38 +1,44 @@
 import java.util.Scanner;
 
+class Temperature {
+    private double celsius;
+
+    public Temperature() {
+        this.celsius = 0.0;
+    }
+
+    public Temperature(double celsius) {
+        this.celsius = celsius;
+    }
+
+    public double toCelsius() {
+        return this.celsius;
+    }
+
+    public double toFahrenheit() {
+        return (this.celsius * 9 / 5) + 32;
+    }
+
+    public void setCelsius(double celsius) {
+        this.celsius = celsius;
+    }
+
+    public void setFahrenheit(double fahrenheit) {
+        this.celsius = (fahrenheit - 32) * 5 / 9;
+    }
+}
+
 public class Q2 {
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("0. Magenta");
-        System.out.println("1. Cyan");
-        System.out.println("2. Red");
-        System.out.println("3. Blue");
-        System.out.println("4. Green");
-        System.out.print("Select one color from the above list: ");
+        System.out.print("Enter temperature in Fahrenheit: ");
+        double inputFahrenheit = scanner.nextDouble();
 
-        int selection = scanner.nextInt();
+        Temperature temp = new Temperature();
+        temp.setFahrenheit(inputFahrenheit);
 
-        switch (selection) {
-            case 0:
-                System.out.println("You selected Magenta");
-                break;
-            case 1:
-                System.out.println("You selected Cyan");
-                break;
-            case 2:
-                System.out.println("You selected Red");
-                break;
-            case 3:
-                System.out.println("You selected Blue");
-                break;
-            case 4:
-                System.out.println("You selected Green");
-                break;
-            default:
-                System.out.println("Invalid selection");
-        }
+        System.out.println(inputFahrenheit + " Fahrenheit is equal to " + temp.toCelsius() + " Celsius");
 
         scanner.close();
     }

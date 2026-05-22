@@ -1,42 +1,47 @@
 import java.util.Scanner;
 
+class Circle {
+    private double radius;
+
+    public Circle() {
+        this.radius = 0.0;
+    }
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    public double computeArea() {
+        return 3.14159 * this.radius * this.radius;
+    }
+
+    public double computeCircumference() {
+        return 2 * 3.14159 * this.radius;
+    }
+}
+
 public class Q3 {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the radius of the inner circle (ri): ");
+        double ri = scanner.nextDouble();
 
-        System.out.print("Enter a power of 10 (6, 9, 12, ...): ");
-        int power = input.nextInt();
+        System.out.print("Enter the radius of the outer circle (ro): ");
+        double ro = scanner.nextDouble();
 
-        switch (power) {
-            case 6:
-                System.out.println("Million");
-                break;
-            case 9:
-                System.out.println("Billion");
-                break;
-            case 12:
-                System.out.println("Trillion");
-                break;
-            case 15:
-                System.out.println("Quadrillion");
-                break;
-            case 18:
-                System.out.println("Quintillion");
-                break;
-            case 21:
-                System.out.println("Sextillion");
-                break;
-            case 30:
-                System.out.println("Nonillion");
-                break;
-            case 100:
-                System.out.println("Googol");
-                break;
-            default:
-                System.out.println("No corresponding word for this power of 10.");
-        }
+        Circle innerCircle = new Circle(ri);
+        Circle outerCircle = new Circle();
+        outerCircle.setRadius(ro);
 
-        input.close();
+        double shadedArea = outerCircle.computeArea() - innerCircle.computeArea();
+
+        System.out.println("The area of the shaded circular region is: " + shadedArea);
+
+        scanner.close();
     }
 }

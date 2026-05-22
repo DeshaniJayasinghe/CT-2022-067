@@ -1,19 +1,50 @@
-import java.util.Scanner;
+class Owner {
+    private String ownerName;
+    private String phoneNo;
 
-public class Q4 {
-    public static void main(String[] args) {
+    public Owner() {
+        this.ownerName = "Unknown";
+        this.phoneNo = "Unknown";
+    }
 
-        Scanner input = new Scanner(System.in);
+    public Owner(String name, String num) {
+        this.ownerName = name;
+        this.phoneNo = num;
+    }
 
-        System.out.print("Enter a year: ");
-        int year = input.nextInt();
+    public String getOwnerName() {
+        return this.ownerName;
+    }
 
-        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-            System.out.println("Leap Year");
-        } else {
-            System.out.println("Not a Leap Year");
-        }
+    public void setOwnerName(String name) {
+        this.ownerName = name;
+    }
 
-        input.close();
+    public String getPhoneNo() {
+        return this.phoneNo;
+    }
+
+    public void setPhoneNo(String num) {
+        this.phoneNo = num;
+    }
+}
+
+class Bicycle {
+    private Owner owner;
+
+    public Bicycle() {
+        this.owner = new Owner();
+    }
+
+    public Bicycle(Owner owner) {
+        this.owner = owner;
+    }
+
+    public Owner getOwner() {
+        return this.owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 }
